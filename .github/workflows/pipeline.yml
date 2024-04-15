@@ -1,0 +1,66 @@
+name: Deployment pipeline
+
+on:
+  push:
+    branches:
+      - main
+    pull_request:
+      branches: [main]
+      types: [opened, synchronize]
+
+jobs:
+  simple_deployment_pipeline:
+    runs-on: ubuntu-20.04
+    if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, 'skip') }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          node-version: '20'
+      - name: Install backend dependencies
+        run: npm run start
+      - name: Install frontend dependencies
+        run: npm run dev install
+      - name: Check style backend 
+        run: npm run lint-be
+      - name: Check style frontend 
+        run: npm run lint-fe
+      - name: build 
+        run: npm run build 
+
+  tag_release:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-20.04
+    if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, 'skip') }}
+    steps: 
+      - name: Checkout code 
+        uses: actions/checkout@v2
+      - name: Bump version and push tag 
+        uses: anothrNick/github-tag-action@1.67.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WITH_V: false
+
+  webhook_notify:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-20.04
+    steps:       
+      - name: Deployed Success
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: success()
+        with:
+            severity: info
+            details: Deployed Succeeded!
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: Deployed Failure
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: failure()
+        with:
+            severity: info
+            details: Deployed failed! 
+            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
+
+  
+
+
+    
