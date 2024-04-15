@@ -19,7 +19,7 @@ jobs:
       - name: Install backend dependencies
         run: npm run start
       - name: Install frontend dependencies
-        run: npm run dev install
+        run: npm run dev
       - name: Check style backend 
         run: npm run lint-be
       - name: Check style frontend 
