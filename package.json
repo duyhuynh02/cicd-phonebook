@@ -1,10 +1,12 @@
 {
     "scripts": {
-      "start": "node ./server/index.js",
-      "dev": "cd ./client && npm run dev",
-      "build": "cd ./client && npm run build",
-      "lint-fe": "cd ./client && npm run lint", 
-      "lint-be": "cd ./server && npm run lint"
+        "start": "node ./server/index.js",
+        "dev": "cd ./client && npm run dev",
+        "build": "cd ./client && npm run build",
+        "lint-fe": "cd ./client && npm run lint",
+        "lint-be": "cd ./server && npm run lint"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.5"
     }
 }
-  
