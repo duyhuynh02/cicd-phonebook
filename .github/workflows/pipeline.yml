@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          node-version: '20'
+          node-version: '18.20.1'
       - name: Install backend dependencies
         run: npm run start
       - name: Install frontend dependencies
