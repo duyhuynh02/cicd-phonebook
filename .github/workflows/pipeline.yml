@@ -18,6 +18,8 @@ jobs:
           node-version: '18.20.1'
       - name: Install backend dependencies
         run: npm run start
+        env: 
+          MONGDB_URI: ${{ secrets.MONGODB_URI }}
       - name: Install frontend dependencies
         run: npm run dev
       - name: Check style backend 
