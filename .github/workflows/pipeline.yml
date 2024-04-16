@@ -34,8 +34,6 @@ jobs:
         run: npm run lint-be
       - name: Check style frontend 
         run: npm run lint-fe
-      - name: build 
-        run: npm run build 
 
   tag_release:
     needs: [simple_deployment_pipeline]
