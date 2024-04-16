@@ -1,8 +1,9 @@
 {
     "scripts": {
-        "start": "node ./server/index.js",
-        "dev": "cd ./client && npm run dev",
-        "build": "cd ./client && npm run build",
+        "install:backend": "cd ./server && npm install", 
+        "install-frontend": "cd ./client && npm install",
+        "start": "cd ./server && npm run start",
+        "build": "cd ./client && rm -rf dist && npm run build && cp -r dist ../server",
         "lint-fe": "cd ./client && npm run lint",
         "lint-be": "cd ./server && npm run lint"
     },
