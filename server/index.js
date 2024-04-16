@@ -105,6 +105,7 @@ app.use(errorHandler)
 
 
 const PORT = process.env.PORT
+console.log('port: ', PORT)
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}\n`)
 })
