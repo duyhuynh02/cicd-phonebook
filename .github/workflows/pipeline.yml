@@ -28,37 +28,37 @@ jobs:
         run: cd ./client && npm install
         
 
-  tag_release:
-    needs: [simple_deployment_pipeline]
-    runs-on: ubuntu-20.04
-    if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, 'skip') }}
-    steps: 
-      - name: Checkout code 
-        uses: actions/checkout@v2
-      - name: Bump version and push tag 
-        uses: anothrNick/github-tag-action@1.67.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: false
+  # tag_release:
+  #   needs: [simple_deployment_pipeline]
+  #   runs-on: ubuntu-20.04
+  #   if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, 'skip') }}
+  #   steps: 
+  #     - name: Checkout code 
+  #       uses: actions/checkout@v2
+  #     - name: Bump version and push tag 
+  #       uses: anothrNick/github-tag-action@1.67.0
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         WITH_V: false
 
-  webhook_notify:
-    needs: [simple_deployment_pipeline]
-    runs-on: ubuntu-20.04
-    steps:       
-      - name: Deployed Success
-        uses: rjstone/discord-webhook-notify@v1.0.4
-        if: success()
-        with:
-            severity: info
-            details: Deployed Succeeded!
-            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-      - name: Deployed Failure
-        uses: rjstone/discord-webhook-notify@v1.0.4
-        if: failure()
-        with:
-            severity: info
-            details: Deployed failed! 
-            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+  # webhook_notify:
+  #   needs: [simple_deployment_pipeline]
+  #   runs-on: ubuntu-20.04
+  #   steps:       
+  #     - name: Deployed Success
+  #       uses: rjstone/discord-webhook-notify@v1.0.4
+  #       if: success()
+  #       with:
+  #           severity: info
+  #           details: Deployed Succeeded!
+  #           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+  #     - name: Deployed Failure
+  #       uses: rjstone/discord-webhook-notify@v1.0.4
+  #       if: failure()
+  #       with:
+  #           severity: info
+  #           details: Deployed failed! 
+  #           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
 
   
