@@ -16,6 +16,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           node-version: '20'
+      - name: Start MongoDB 
+        uses: supercharge/mongodb-github-action@1.7.4
+        with:
+          mongodb-version: '4.4'
       - name: Set up environment 
         run: | 
           touch .env 
