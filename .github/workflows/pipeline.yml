@@ -19,7 +19,7 @@ jobs:
       - name: Set up environment 
         run: | 
           touch .env 
-          echo MONGODB_URI=${{ secrets.MONGODB_URI }} >> .env
+          echo ${{ secrets.MONGODB_URI }} >> .env
           echo PORT=3001 >> .env
           cat .env
       - name: Install backend dependencies
