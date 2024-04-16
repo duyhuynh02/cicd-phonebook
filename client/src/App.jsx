@@ -50,7 +50,6 @@ const App = () => {
   const [pattern, setNewPattern] = useState('')
   const [errorMessage, setErrorMessage] = useState('lets test it first')
 
-
   useEffect(() => {
     noteService
       .getAll()
@@ -167,4 +166,3 @@ const App = () => {
 
 export default App
 
-//have fun 3

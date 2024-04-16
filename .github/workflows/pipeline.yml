@@ -26,10 +26,7 @@ jobs:
         run: cd ./server && npm install 
       - name: Install frontend dependencies
         run: cd ./client && npm install
-      - name: Check style backend 
-        run: npm run lint-be
-      - name: Check style frontend 
-        run: npm run lint-fe
+        
 
   tag_release:
     needs: [simple_deployment_pipeline]

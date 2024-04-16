@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 
 let password = ''
 
-
 if (process.argv.length < 3) {
   console.log('give password or name/phone as arguments')
   process.exit(1)
@@ -15,14 +14,7 @@ if (process.argv.length < 3) {
 const url = `mongodb+srv://imnikz:${password}@cluster0.pra6dob.mongodb.net/addPhone?retryWrites=true&w=majority`
 
 mongoose.set('strictQuery', false)
-// console.log('url: ', url)
 mongoose.connect(url)
-  .then(() => console.log('Database connected'))
-  .catch((error) => {
-    console.error('DB error: ', error)
-    process.exit(1)
-  })
-
 
 const phoneSchema = new mongoose.Schema({
   name: String,

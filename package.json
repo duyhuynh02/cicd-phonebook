@@ -5,11 +5,5 @@
         "build": "cd ./client && npm run build",
         "lint-fe": "cd ./client && npm run lint",
         "lint-be": "cd ./server && npm run lint"
-    },
-    "dependencies": {
-        "dotenv": "^16.4.5",
-        "express": "^4.19.2",
-        "mongoose": "^8.3.1",
-        "morgan": "^1.10.0"
     }
 }

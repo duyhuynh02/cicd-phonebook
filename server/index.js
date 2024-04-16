@@ -4,7 +4,6 @@ const morgan = require('morgan')
 const app = express()
 const Phone = require('./models/phone')
 
-
 morgan.token('personNameAndNumber', (request) => {
   const { name, number } = request.body
   return `{"name": "${name}", "number": "${number}"}`
@@ -35,6 +34,7 @@ const errorHandler = (error, request, response, next) => {
 
 let persons = [
 ]
+
 
 app.get('/api/persons', (request, response) => {
   Phone.find({}).then(phones => {
@@ -105,9 +105,6 @@ app.use(errorHandler)
 
 
 const PORT = process.env.PORT
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}\n`)
 })
-
-//test
