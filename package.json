@@ -1,7 +1,7 @@
 {
     "scripts": {
         "install:backend": "cd ./server && npm install", 
-        "install-frontend": "cd ./client && npm install",
+        "install:frontend": "cd ./client && npm install",
         "start": "cd ./server && npm run start",
         "build": "cd ./client && rm -rf dist && npm run build && cp -r dist ../server",
         "lint-fe": "cd ./client && npm run lint",
