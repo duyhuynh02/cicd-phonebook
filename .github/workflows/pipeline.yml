@@ -16,6 +16,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           node-version: '20'
+      - name: Set up environment 
+        run: | 
+          echo "MONGO_URL=${{ secrets.MONGODB_URI }}" > .env
       - name: Install backend dependencies
         run: cd ./server && npm install 
       - name: Run backend 
