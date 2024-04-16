@@ -17,9 +17,13 @@ jobs:
         with:
           node-version: '20'
       - name: Install backend dependencies
+        run: npm install 
+      - name: Run backend 
         run: npm run start
       - name: Install frontend dependencies
-        run: npm run dev
+        run: npm install
+      - name: Run Frontend 
+        run: npm run dev 
       - name: Check style backend 
         run: npm run lint-be
       - name: Check style frontend 
