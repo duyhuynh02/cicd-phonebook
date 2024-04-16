@@ -17,9 +17,9 @@ jobs:
         with:
           node-version: '20'
       - name: Install backend dependencies
-        run: npm run install-backend
+        run: npm run install:backend
       - name: Install frontend dependencies
-        run: npm run install-frontend
+        run: npm run install:frontend
       - name: Build 
         run: npm run build 
 
