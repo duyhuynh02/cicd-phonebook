@@ -18,7 +18,10 @@ jobs:
           node-version: '20'
       - name: Set up environment 
         run: | 
-          echo "MONGO_URL=${{ secrets.MONGODB_URI }}" > .env
+          touch .env 
+          echo MONGODB_URI=${{ secrets.MONGODB_URI }} >> .env
+          echo PORT=3001 >> .env
+          cat .env
       - name: Install backend dependencies
         run: cd ./server && npm install 
       - name: Run backend 
